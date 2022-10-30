@@ -4,12 +4,14 @@ const productTitle = document.querySelector("#product-title");
 const productQuantity = document.querySelector("#product-quantity");
 const addNewProductBtn = document.querySelector("#addNewProduct");
 const searchProduct = document.querySelector("#search-product");
+const sortProduct = document.querySelector("#sort-product");
 
 class ProductView {
   constructor() {
     addNewProductBtn.addEventListener("click", (e) => this.addNewProduct(e));
     this.products = [];
     searchProduct.addEventListener("change", (e) => this.searchProduct(e));
+    sortProduct.addEventListener("change", (e) => this.sortedProduct(e));
   }
   setApp() {
     this.products = Storage.getAllProducts();
@@ -67,6 +69,11 @@ class ProductView {
       p.title.toLowerCase().includes(value)
     );
     this.createdProductList(filtered);
+  }
+  sortedProduct(e) {
+    const sorted = e.target.value;
+    this.products = Storage.getAllProducts(sorted);
+    this.createdProductList(this.products);
   }
 }
 
