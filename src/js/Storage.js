@@ -1,34 +1,32 @@
-const categories = [
-  {
-    id: 1,
-    title: "frontend",
-    description: "frontend of application",
-    createdAt: "2022-01-01T10:47:16.989Z",
-  },
-  {
-    id: 2,
-    title: "backend",
-    description: "backend of application",
-    createdAt: "2022-09-01T10:47:30.669Z",
-  },
-];
-const products = [
-  {
-    id: 1,
-    title: "react.js",
-    category: "frontend",
-    updated: "2021-11-01T10:47:26.889Z",
-  },
-  {
-    id: 2,
-    title: "node.js",
-    category: "backend",
-    updated: "2022-11-01T10:47:26.999Z",
-  },
-];
-class Storage {
-  constructor() {}
-
+// const categories = [
+//   {
+//     id: 1,
+//     title: "frontend",
+//     description: "frontend of application",
+//     createdAt: "2022-01-01T10:47:16.989Z",
+//   },
+//   {
+//     id: 2,
+//     title: "backend",
+//     description: "backend of application",
+//     createdAt: "2022-09-01T10:47:30.669Z",
+//   },
+// ];
+// const products = [
+//   {
+//     id: 1,
+//     title: "react.js",
+//     category: "frontend",
+//     updated: "2021-11-01T10:47:26.889Z",
+//   },
+//   {
+//     id: 2,
+//     title: "node.js",
+//     category: "backend",
+//     updated: "2022-11-01T10:47:26.999Z",
+//   },
+// ];
+export default class Storage {
   static getAllCategories() {
     const saveCategories = JSON.parse(localStorage.getItem("categories")) || [];
     return saveCategories.sort((a, b) =>
@@ -69,7 +67,6 @@ class Storage {
       product.updated = new Date().toISOString();
       savedProducts.push(product);
     }
-    localStorage.setItem('products',JSON.stringify(savedProducts))
+    localStorage.setItem("products", JSON.stringify(savedProducts));
   }
 }
-export default new Storage();
