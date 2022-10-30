@@ -107,6 +107,7 @@
             </div>
             <div class="w-full flex justify-center items-center">
               <button
+                id="addNewProduct"
                 type="submit"
                 class="flex-1 bg-slate-500 text-slate-300 rounded-xl py-2"
               >
@@ -152,23 +153,7 @@
             </select>
           </div>
           <!------products----->
-          <div class="flex items-center justify-between mb-6">
-            <span class="text-slate-400">react.js</span>
-            <div class="flex items-center justify-between gap-x-2">
-              <span class="text-slate-400">1401/2/16</span>
-              <span
-                class="border bg-transparent text-slate-400 rounded-full p-1 text-sm"
-                >back-end</span
-              >
-              <span
-                class="flex items-center justify-center w-7 h-7 rounded-full border-white border-2 bg-slate-700 text-white"
-                >7</span
-              >
-              <button class="border-0 bg-transparent text-red-500">
-                delete
-              </button>
-            </div>
-          </div>
+          <div id="product-list"></div>
         </div>
       </div>
     </div>

@@ -1,31 +1,31 @@
-// const categories = [
-//   {
-//     id: 1,
-//     title: "frontend",
-//     description: "frontend of application",
-//     createdAt: "2022-01-01T10:47:16.989Z",
-//   },
-//   {
-//     id: 2,
-//     title: "backend",
-//     description: "backend of application",
-//     createdAt: "2022-09-01T10:47:30.669Z",
-//   },
-// ];
-// const products = [
-//   {
-//     id: 1,
-//     title: "react.js",
-//     category: "frontend",
-//     updated: "2021-11-01T10:47:26.889Z",
-//   },
-//   {
-//     id: 2,
-//     title: "node.js",
-//     category: "backend",
-//     updated: "2022-11-01T10:47:26.999Z",
-//   },
-// ];
+const categories = [
+  {
+    id: 1,
+    title: "frontend",
+    description: "frontend of application",
+    createdAt: "2022-01-01T10:47:16.989Z",
+  },
+  {
+    id: 2,
+    title: "backend",
+    description: "backend of application",
+    createdAt: "2022-09-01T10:47:30.669Z",
+  },
+];
+const products = [
+  {
+    id: 1,
+    title: "react.js",
+    category: "frontend",
+    createdAt: "2021-11-01T10:47:26.889Z",
+  },
+  {
+    id: 2,
+    title: "node.js",
+    category: "backend",
+    createdAt: "2022-11-01T10:47:26.999Z",
+  },
+];
 export default class Storage {
   static getAllCategories() {
     const saveCategories = JSON.parse(localStorage.getItem("categories")) || [];
@@ -35,7 +35,7 @@ export default class Storage {
   }
   static saveCategories(category) {
     const savedCategories = Storage.getAllCategories();
-    const existedItem = savedCategories.find((c) => c.id == category.id);
+    const existedItem = savedCategories.find((c) => c.title == category.title);
     if (existedItem) {
       //edit
       existedItem.title = category.title;
@@ -49,12 +49,13 @@ export default class Storage {
     localStorage.setItem("categories", JSON.stringify(savedCategories));
   }
   static getAllProducts() {
-    const savedProducts = JSON.parse(localStorage.getItem("products"));
+    const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
     return savedProducts.sort((a, b) =>
-      new Date(a.updated) > new Date(b.updated) ? -1 : 1
+      new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1
     );
   }
   static saveProducts(product) {
+    console.log(product);
     const savedProducts = Storage.getAllProducts();
     const existedProduct = savedProducts.find((p) => p.id == product.id);
     if (existedProduct) {
@@ -64,7 +65,7 @@ export default class Storage {
       existedProduct.category = product.category;
     } else {
       product.id = new Date().getTime();
-      product.updated = new Date().toISOString();
+      product.createdAt = new Date().toISOString();
       savedProducts.push(product);
     }
     localStorage.setItem("products", JSON.stringify(savedProducts));

@@ -1,5 +1,4 @@
 import Storage from "./Storage.js";
-
 const categoryTitle = document.querySelector("#category-title");
 const categoryDescription = document.querySelector("#category-description");
 const AddNewCategoryBtn = document.querySelector("#AddNewCategory");
@@ -8,10 +7,13 @@ const productcategorySelect = document.querySelector("#product-category");
 
 class CategoryView {
   constructor() {
-    AddNewCategoryBtn.addEventListener("click", (e) => this.AddNewCategory(e));
+    AddNewCategoryBtn.addEventListener("click", (e) => this.addNewCategory(e));
     this.categories = [];
   }
-  AddNewCategory(e) {
+  setApp() {
+    this.categories = Storage.getAllCategories();
+  }
+  addNewCategory(e) {
     e.preventDefault();
     const title = categoryTitle.value;
     const description = categoryDescription.value;
@@ -22,9 +24,7 @@ class CategoryView {
     categoryTitle.value = "";
     categoryDescription.value = "";
   }
-  setApp() {
-    this.categories = Storage.getAllCategories();
-  }
+
   createCategoriesList() {
     let result = `<option class="bg-slate-500 text-slate-300" value="">
     select a category
