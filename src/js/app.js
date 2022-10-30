@@ -6,5 +6,5 @@ document.addEventListener("DOMContentLoaded", () => {
   CategoryView.setApp();
   CategoryView.createCategoriesList();
   ProductView.setApp();
-  ProductView.createdProductList();
+  ProductView.createdProductList(ProductView.products);
 });
