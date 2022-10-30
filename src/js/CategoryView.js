@@ -36,7 +36,6 @@ class CategoryView {
         </option>`)
     );
     productcategorySelect.innerHTML = result;
-    console.log(productcategorySelect);
   }
 }
 
