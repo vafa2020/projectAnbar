@@ -5,6 +5,7 @@ const AddNewCategoryBtn = document.querySelector("#AddNewCategory");
 const toggleButtonCategory = document.querySelector("#toggle-button-category");
 const productcategorySelect = document.querySelector("#product-category");
 const cancelCategoryBtn = document.querySelector("#cancelCategory");
+const wrapperCategory = document.querySelector("#categoryToggle");
 
 class CategoryView {
   constructor() {
@@ -26,6 +27,8 @@ class CategoryView {
     this.createCategoriesList();
     categoryTitle.value = "";
     categoryDescription.value = "";
+    wrapperCategory.classList.add("hidden");
+    toggleButtonCategory.classList.remove("hidden");
   }
 
   createCategoriesList() {
@@ -42,12 +45,10 @@ class CategoryView {
   }
 
   toggleChange() {
-    const wrapperCategory = document.querySelector("#categoryToggle");
     wrapperCategory.classList.remove("hidden");
     toggleButtonCategory.classList.add("hidden");
   }
   cancelCategory() {
-    const wrapperCategory = document.querySelector("#categoryToggle");
     wrapperCategory.classList.add("hidden");
     toggleButtonCategory.classList.remove("hidden");
   }

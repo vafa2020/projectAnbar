@@ -25,6 +25,9 @@ class ProductView {
     Storage.saveProducts({ title, quantity, category });
     this.products = Storage.getAllProducts();
     this.createdProductList(this.products);
+    productTitle.value = "";
+    productQuantity.value = "";
+    productCategory.value = "";
   }
 
   createdProductList(products) {
@@ -81,7 +84,7 @@ class ProductView {
     const Id = e.target.dataset.id;
     Storage.deleteProductStorage(Id);
     this.products = Storage.getAllProducts();
-    this.createdProductList(this.products )
+    this.createdProductList(this.products);
   }
 }
 
